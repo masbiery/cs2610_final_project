@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'secret_note_sharing'
 ]
 
 MIDDLEWARE_CLASSES = [
