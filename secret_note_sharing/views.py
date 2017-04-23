@@ -3,4 +3,5 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("IndexPage")
+    return render(request,'secret_note_sharing/index.html')
+    
