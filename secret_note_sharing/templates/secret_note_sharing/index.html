@@ -1,8 +1,14 @@
 <html>
     <head>
-        <title>Secret Note Sharing</title>
+        <title>SECRET NOTE SHARING</title>
     </head>
     <body>
         <h1>SECRET NOTE SHARING</h1>
+        <form action= '/secret_note_sharing/submitted' method = 'POST'>
+            {% csrf_token %}
+            <textarea name = 'message', rows = '5', cols = '40'>Input message here...</textarea>
+            </br>
+            <input type='submit'>
+        </form>
     </body>
 </html>

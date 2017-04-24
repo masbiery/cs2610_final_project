@@ -19,5 +19,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('secret_note_sharing.urls')),
+    url(r'^secret_note_sharing/', include('secret_note_sharing.urls', namespace='secret_note_sharing')),
 ]
