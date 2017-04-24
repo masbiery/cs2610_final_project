@@ -4,11 +4,11 @@
     </head>
     <body>
         <h1>SECRET NOTE SHARING</h1>
-        <form action= '/secret_note_sharing/submitted' method = 'POST'>
+        <form action = "{% url 'secret_note_sharing:message_submitted' %}" method = 'POST'>
             {% csrf_token %}
-            <textarea name = 'message', rows = '5', cols = '40'>Input message here...</textarea>
+            <textarea name = 'message_text', rows = '5', cols = '40'>Input message here...</textarea>
             </br>
-            <input type='submit'>
+            <input type='submit' value = 'Submit'/>
         </form>
     </body>
 </html>
