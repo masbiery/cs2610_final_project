@@ -1,0 +1,10 @@
+body {
+    background-color: black;
+    font-family: monospace;
+    margin: auto;
+    text-align: center;
+}
+textarea {
+    font-family: monospace;
+    font-size: 20px;
+}
