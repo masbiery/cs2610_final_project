@@ -1,6 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.core.urlresolvers import reverse
 from secret_note_sharing.models import Message
 from secret_note_sharing.forms import SubmitForm
 
@@ -20,10 +19,8 @@ def message_submitted(request, message_id):
     return render(request, 'secret_note_sharing/message_submitted.html', {'message': message})
     
 def message_retrieve(request, message_id):
-    try:
-        message = Message.objects.get(pk=message_id)
-    except Message.DoesNotExist:
-        raise Http404("Message does not exist")
+    message = get_object_or_404(Message, pk=message_id)
+    Message.objects.filter(pk=message_id).delete()
     return render(request, 'secret_note_sharing/message_retrieve.html', {'message': message})
     
 
