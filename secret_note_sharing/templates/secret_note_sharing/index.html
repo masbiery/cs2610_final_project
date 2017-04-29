@@ -4,14 +4,20 @@
         <title>SECRET NOTE SHARING</title>
         {% load staticfiles %}
         <link rel="stylesheet" type="text/css" href="{% static 'secret_note_sharing/style.css' %}" />
+        <script src="https://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
     </head>
     <body>
         <h1>SECRET NOTE SHARING</h1>
-        <form method = 'POST'>
+        <form method = 'POST' onclick>
             {% csrf_token %}
-            <textarea name = 'message_text', rows = '7', cols = '60'>Tell me your secrets...</textarea>
+            <textarea id = "textArea" name = 'message_text', rows = '7', cols = '60'>Tell me your secrets...</textarea>
             </br>
-            <input type='submit' value = 'Submit'/>
+            <input type='submit' value = 'Submit' onclick = 'encryptMessage(message_text);'/>
         </form>
     </body>
+    <script>
+        function encryptMessage(message_text){
+            document.getElementById('textArea').value = message_text.value;
+        }
+    </script>>
 </html>
