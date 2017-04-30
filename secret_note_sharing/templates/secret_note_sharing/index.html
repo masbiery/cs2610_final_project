@@ -1,23 +1,25 @@
-
 <html>
     <head>
         <title>SECRET NOTE SHARING</title>
         {% load staticfiles %}
-        <link rel="stylesheet" type="text/css" href="{% static 'secret_note_sharing/style.css' %}" />
-        <script src="https://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
+        <link rel='stylesheet' type='text/css' href='{% static 'secret_note_sharing/css/style.css' %}'/>
     </head>
     <body>
         <h1>SECRET NOTE SHARING</h1>
-        <form method = 'POST' onclick>
+        <form method = 'POST'>
             {% csrf_token %}
             <textarea id = "textArea" name = 'message_text', rows = '7', cols = '60'>Tell me your secrets...</textarea>
             </br>
             <input type='submit' value = 'Submit' onclick = 'encryptMessage(message_text);'/>
         </form>
     </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/pbkdf2.js"></script>
     <script>
+        /* global CryptoJS */
         function encryptMessage(message_text){
-            document.getElementById('textArea').value = message_text.value;
+            var encryptThis = CryptoJS.AES.encrypt(message_text.value, 'supersecretpassphrase');
+            document.getElementById('textArea').value = encryptThis;
         }
-    </script>>
+    </script>
 </html>

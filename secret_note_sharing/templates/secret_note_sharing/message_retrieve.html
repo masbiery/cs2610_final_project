@@ -1,9 +1,20 @@
 <html>
     <head>
+        <meta http-equiv="refresh" content="120">
         <title>SECRET NOTE SHARING</title>
     </head>
     <body>
-        <h1>{{message}}</h1>
+        <h1 id="mess">{{message}}</h1>
         <p>Here is your message</p>
     </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/pbkdf2.js"></script>
+    <script>
+        /* global CryptoJS */
+        function decryptMessage(message_text){
+            var decryptThis = CryptoJS.AES.decrypt(message_text, "supersecretpassphrase");
+            document.getElementById("mess").innerHTML = decryptThis.toString(CryptoJS.enc.Utf8);
+        }
+        decryptMessage("{{message}}");
+    </script>
 </html>
