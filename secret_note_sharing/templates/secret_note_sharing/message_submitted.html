@@ -1,9 +1,13 @@
 <html>
     <head>
         <title>SECRET NOTE SHARING</title>
+        {% load staticfiles %}
+        <link rel='stylesheet' type='text/css' href='{% static 'secret_note_sharing/css/style.css' %}'/>
     </head>
     <body>
-        <h1>{{message.pk}}</h1>
-        <p>Your message has been submitted.</p>
+        <div>
+            <h1>Your secret has been locked away.</h1>
+            <span>https://cs2610-final-project-mbiery.c9users.io/secret_note_sharing/message/{{message.id}}</span>
+        </div>
     </body>
 </html>

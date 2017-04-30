@@ -2,10 +2,14 @@
     <head>
         <meta http-equiv="refresh" content="120">
         <title>SECRET NOTE SHARING</title>
+        {% load staticfiles %}
+        <link rel='stylesheet' type='text/css' href='{% static 'secret_note_sharing/css/style.css' %}'/>
     </head>
     <body>
-        <h1 id="mess">{{message}}</h1>
-        <p>Here is your message</p>
+        <div>
+            <h1>Here is your message</h1> 
+            <textarea id = "displayMessage" name = 'message_text', rows = '7', cols = '60'></textarea>
+        </div>
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/pbkdf2.js"></script>
@@ -13,7 +17,7 @@
         /* global CryptoJS */
         function decryptMessage(message_text){
             var decryptThis = CryptoJS.AES.decrypt(message_text, "supersecretpassphrase");
-            document.getElementById("mess").innerHTML = decryptThis.toString(CryptoJS.enc.Utf8);
+            document.getElementById("displayMessage").innerHTML = decryptThis.toString(CryptoJS.enc.Utf8);
         }
         decryptMessage("{{message}}");
     </script>

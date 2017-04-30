@@ -5,13 +5,16 @@
         <link rel='stylesheet' type='text/css' href='{% static 'secret_note_sharing/css/style.css' %}'/>
     </head>
     <body>
-        <h1>SECRET NOTE SHARING</h1>
-        <form method = 'POST'>
-            {% csrf_token %}
-            <textarea id = "textArea" name = 'message_text', rows = '7', cols = '60'>Tell me your secrets...</textarea>
+        <div>
+            <h1>SECRET NOTE SHARING</h1>
             </br>
-            <input type='submit' value = 'Submit' onclick = 'encryptMessage(message_text);'/>
-        </form>
+            <form method = 'POST'>
+                {% csrf_token %}
+                <textarea id = "textArea" name = 'message_text', rows = '7', cols = '60'>Tell me your secret message...</textarea>
+                </br>
+                <input type='submit' value = 'Submit' onclick = 'encryptMessage(message_text);'/>
+            </form>
+        </div>
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/pbkdf2.js"></script>
