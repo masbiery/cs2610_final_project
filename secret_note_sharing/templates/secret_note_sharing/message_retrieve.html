@@ -1,14 +1,16 @@
 <html>
     <head>
         <meta http-equiv="refresh" content="120">
-        <title>SECRET NOTE SHARING</title>
+        <title>SECRET NOTE</title>
         {% load staticfiles %}
         <link rel='stylesheet' type='text/css' href='{% static 'secret_note_sharing/css/style.css' %}'/>
     </head>
     <body>
         <div>
-            <h1>Here is your message</h1> 
-            <textarea id = "displayMessage" name = 'message_text', rows = '7', cols = '60'></textarea>
+            <h1>MESSAGE FOR YOU, SIR</h1> 
+            <textarea id = "displayMessage" name = 'message_text', rows = '7', cols = '80'></textarea>
+        </div>
+        <div id='timer'>
         </div>
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
@@ -17,8 +19,16 @@
         /* global CryptoJS */
         function decryptMessage(message_text){
             var decryptThis = CryptoJS.AES.decrypt(message_text, "supersecretpassphrase");
-            document.getElementById("displayMessage").innerHTML = decryptThis.toString(CryptoJS.enc.Utf8);
+            document.getElementById('displayMessage').innerHTML = decryptThis.toString(CryptoJS.enc.Utf8);
         }
+        function resetTimer() {
+            var time = 120;
+            setInterval(function(){ 
+                time -= 1;
+                document.getElementById('timer').innerHTML = 'Message will self-destruct in: ' + time.toString();
+            }, 1000);
+        }
+        resetTimer();
         decryptMessage("{{message}}");
     </script>
 </html>

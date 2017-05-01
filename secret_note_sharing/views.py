@@ -19,9 +19,13 @@ def message_submitted(request, message_id):
     return render(request, 'secret_note_sharing/message_submitted.html', {'message': message})
     
 def message_retrieve(request, message_id):
-    message = get_object_or_404(Message, pk=message_id)
+    #message = get_object_or_404(Message, pk=message_id)
+    try:
+        message = Message.objects.get(pk=message_id)
+    except Message.DoesNotExist:
+        return HttpResponse(no_message(request))
     Message.objects.filter(pk=message_id).delete()
     return render(request, 'secret_note_sharing/message_retrieve.html', {'message': message})
     
-
-    
+def no_message(request):
+    return render(request, 'secret_note_sharing/no_message.html')

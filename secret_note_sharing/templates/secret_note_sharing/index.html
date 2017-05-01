@@ -1,16 +1,15 @@
 <html>
     <head>
-        <title>SECRET NOTE SHARING</title>
+        <title>SECRET NOTE</title>
         {% load staticfiles %}
         <link rel='stylesheet' type='text/css' href='{% static 'secret_note_sharing/css/style.css' %}'/>
     </head>
     <body>
         <div>
-            <h1>SECRET NOTE SHARING</h1>
-            </br>
+            <h1>SECRET NOTE</h1>
             <form method = 'POST'>
                 {% csrf_token %}
-                <textarea id = "textArea" name = 'message_text', rows = '7', cols = '60'>Tell me your secret message...</textarea>
+                <textarea id = "textArea" name = 'message_text', rows = '7', cols = '80'>Tell me your secret message...</textarea>
                 </br>
                 <input type='submit' value = 'Submit' onclick = 'encryptMessage(message_text);'/>
             </form>

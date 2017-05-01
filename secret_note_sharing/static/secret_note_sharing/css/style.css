@@ -5,13 +5,19 @@ body {
 }
 textarea {
     font-family: monospace;
-    font-size: 20px;
+    font-size: 17px;
     resize:vertical;
 }
 h1, p {
     color: green;
 }
-
-span {
-    background-color: white;   
+span, #urlBox{
+    background-color: white;
+    color: black;
+    font-family: monospace;
+    font-size: 12px;
+    resize: none;
+}
+a, #timer{
+    color: white;
 }
